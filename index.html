@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나만의 생일카드 제작 서비스</title>
+  <link href="https://fonts.googleapis.com/css2?family=SUITE&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+    font-family: 'Ownglyph_Seung_Hoon-Rg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/Ownglyph_Seung_Hoon-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+    font-family: 'HakgyoansimBombanghakR';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimBombanghakR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ramche';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Ramche.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+    body {
+      font-family: 'SUITE', sans-serif;
+      color: #3F79FF;
+      text-align: center;
+      background-color: white;
+    }
+
+    .hero {
+      background: url('skybg.png') no-repeat center top;
+      background-size: cover;
+      width: 100%;
+      height: 100vh;}
+
+    .bg2{background-image: url('skybg2jpg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;idth: 100%;
+      height: 100vh;
+      position: relative;}
+
+    .center-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      height: auto;}
+
+    .musicline {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+    }
+
+    .subtitle {font-family: 'Ownglyph_Seung_Hoon-Rg';
+      font-size: 4em;
+      font-weight: bold;
+      margin: 40px 0 20px;
+    margin-top: 300px;}
+
+    .du-dung {font-family: 'Ownglyph_Seung_Hoon-Rg' ;
+      font-size: 4rem;
+      font-weight: bold;
+      color: #3F79FF;
+      animation: dudungEffect 2s ease-out 6;
+    }
+
+    @keyframes dudungEffect {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .centerspace{align-items: center;}
+    .wrap{width: 100%; margin: auto;}
+    .textst{font-family: 'Ownglyph_Seung_Hoon-Rg'; font-size: 1.5em;}
+
+    .box {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background: #f8faff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .quote {
+      font-size: 1em;
+      color: #444;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .highlight {
+      color: hotpink;
+      font-weight: bold;
+    font-size: 2em; font-family: 'HakgyoansimBombanghakR';}
+
+    .content {font-family:HakgyoansimBombanghakR;
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(to bottom, #ffff, #D7F2FF);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;}
+
+    .navbar a {
+      color: #3F79FF;
+      text-decoration: none;
+      margin-left: 15px;}
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .angel-image {margin-top: 200px;
+      ;width: 300px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 14px;
+    }
+    .full-background {
+      background-image: url('ofcourse.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center; background-attachment: fixed;}
+
+    .center-text {
+      font-size: 5em;
+      color: white;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px #3F79FF;
+      font-family: 'HakgyoansimBombanghakR'
+    }
+  
+    .rounded-button {
+      width: 600px;
+      height: 150px;
+      background-color: white;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: #333;
+      font-size: 30px;font-family: 'Ramche'; color: #3F79FF ;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 300px;}
+    
+    .rounded-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .margin1{margin-top: 200px;}
+
+    .background1{background-image: url(skybg2jpg.jpg);background-repeat:no-repeat; background-size: cover;}
+    .img{margin-left: 100px;margin-right: 100px;}
+    .flex{display: flex;}
+
+    .recommend-section {
+      margin-top: 80px;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #dcefff, #ffffff);}
+      .scrolling-text {
+  font-family: 'Ownglyph_Seung_Hoon-Rg';
+  font-size: 3em;
+  font-weight: bold;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background-color: #3F79FF;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+}
+.scrolling-text span {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  min-width: 100%;
+  animation: scroll-left 30s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.background {
+      background-image: url('skybg3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: absolute;
+      bottom: 100px; /* 원하는 위치로 조정 가능 */
+    }
+
+    .slider {
+      display: flex;
+      animation: slide-left 15s linear infinite;
+    }
+
+    .slider img {
+      width: 500px;
+      height: auto;
+      margin-right: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes slide-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+
+
+     .title-customer {
+      width: 80%;
+      margin-top: 20px;
+      text-align: left;
+      align-self: center;
+    }
+    
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #000; font-family: 'Ownglyph_Seung_Hoon-Rg';
+    margin-left: 200px;}
+    
+    .text-box {
+      width: 80%;
+      margin-top: 40px;margin-left: 200px;
+      padding: 25px 35px;
+      background-color: rgba(242, 255, 168, 0.8); /* #F2FFA8 색상에 80% 투명도 */
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 300px;}
+    
+    .message-text {
+      color: #417AFF;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-align: left;
+    font-family: 'Ownglyph_Seung_Hoon-Rg'}
+
+    
+.fullscreen-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; margin-top: 0px;
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Ownglyph_Seung_Hoon-Rg';
+  color: #417AFF;
+}
+
+/* 중앙 흰색 텍스트 박스 */
+.main-text-box {
+  background-color: #fff;
+  padding: 50px 50px;
+  border-radius: 20px;
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 80px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 노란 투명 박스 가로 정렬 */
+.yellow-box-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap; /* 화면 작을 때 줄바꿈 */
+  justify-content: center;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.yellow-box {
+  background-color: rgba(242, 255, 168, 0.8); /* #F2FFA8 with 80% opacity */
+  padding: 40px 50px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+margin-bottom: 100px; animation: float 3s ease-in-out infinite;line-height: 1.5;
+}}
+ .footer {
+  background-image: url('skybg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 100px 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.footer-overlay {
+  padding: 30px;
+  width: fit-content;
+}
+
+.footer-text {
+  font-family: 'HakgyoansimBombanghakR', sans-serif;
+  color: #6895FF;
+  font-size: 1.9rem;
+  text-align: left;
+  line-height: 1.6;
+}
+
+
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="lineforrecipe.gif">
+    </div>
+    <nav class="textst">
+      <a href="#">서비스 소개</a>
+      <a href="#">수령 후기</a>
+      <a href="#">카드 구성</a>
+      <a href="#">신청하기</a>
+    </nav>
+  </header>
+  <div class="hero">
+    <img src="web-title.png">
+  </div>
+  <div class="du-dung">서비스 소개에 앞서!</div>
+  <div class="box">
+    <p>MZ 세대의 가장 큰 특징 중 하나는 자신을 드러내는 것에 망설임이 없다는 것이다. 자신의 취향, 선호, 개성, 가치관이 뚜렷한 그들은 다양한 방식으로 이를 표현한다. 획일화된 기성품보다 나만의 개성을 드러낼 수 있는 ‘나만의 것’에 집중하는 MZ 세대. 소비 시장을 이끌 미래 잠재 고객인 MZ 세대를 끌어들이려면 ‘커스텀’ 제품 개발에 집중해야 한다!</p>
+    <p class="quote">(출처 : 소비자 평가)</p>
+  </div>
+  <div class="content">
+      퍼스널 감성, 취향 존중, 맞춤형 경험.<br>
+      MZ세대는 단순한 제품보다,<br>
+      ‘나’를 반영한 무언가를 소중히 여깁니다.<br>
+      생일 카드도 예외는 아니에요.<br>
+      이젠 똑같은 카드 대신,<br>
+      <span class="highlight">‘나만의 카드’</span>를 선물하세요.
+    </div>
+  </div>
+  <div>
+    <img src="heartwand.gif" class="centerspace margin1">
+  </div>
+  <div>
+    <img src="letter.png"class="centerspace">
+  </div>
+  <div>
+    <div class="scrolling-text">
+      <span>
+        이런 분들에게 추천드려요!   ε(*⌒▽⌒)*ﾟ¨ﾟﾟ･*:..☆    이런 분들에게 추천드려요! ε(*⌒▽⌒)*ﾟ¨ﾟﾟ･*:..☆ 이런 분들에게 추천드려요!   ε(*⌒▽⌒)*ﾟ¨ﾟﾟ･*:..☆    이런 분들에게 추천드려요! ε(*⌒▽⌒)*ﾟ¨ﾟﾟ･*:..☆
+      </span>
+    </div>
+  </div>
+  <div class="bg2">
+    <img src="targetingtext.png" alt="Targeting Text" class="center-image" />
+  </div>
+  <div>
+    <img src="musicline.gif" alt="Music Line" class="musicline" /></div>
+  </div>
+  <div class="container">
+    <img src="puffangel.gif" alt="천사 푸푸!" class="angel-image" />
+    <div class="rounded-button">실제 사례도 궁금해요!</div>
+  </div>
+  <div class="full-background">
+    <div class="center-text">당연히 준비되어있습니다!</div>
+  </div>
+  <div class="background">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <img src="zzo1.png" alt="사진1">
+      <img src="zzo2.png" alt="사진2">
+      <img src="zzo3.png" alt="사진3">
+      <img src="zzo4.png" alt="사진4">
+      <img src="zzo1.png" alt="사진1">
+      <img src="zzo2.png" alt="사진2">
+      <img src="zzo3.png" alt="사진3">
+      <img src="zzo4.png" alt="사진4">
+    </div>
+  </div>
+</div>
+<div class="customer-section">
+    <div class="title-customer">
+      <div class="title">20대 대학생 조oo님 후기</div>
+    </div>
+    <div class="text-box">
+      <p class="message-text">
+        2N년 살면서 이런 생일편지는 처음 받아봤어요. 디자인도 내용도 다 너무 알차고 사랑스럽습니다.<br>앞으로 제 친구들이 생일편지를 직접 써주기보단 모두 여기에 맡겼으면 좋겠어요!<br>별점:오점만점에십점
+      </p>
+    </div>
+  </div>
+  <div class="background">
+  <div class="slider-wrapper">
+    <div class="slider">
+      <img src="hwi1.png" alt="사진1">
+      <img src="hwi2.jpg" alt="사진2">
+      <img src="hwi3.jpg" alt="사진3">
+      <img src="hwi4.jpg" alt="사진4">
+      <img src="hwi1.png" alt="사진1">
+      <img src="hwi2.jpg" alt="사진2">
+      <img src="hwi3.jpg" alt="사진3">
+      <img src="hwi4.jpg" alt="사진4">
+    </div>
+  </div>
+</div>
+<div class="customer-section">
+    <div class="title-customer">
+      <div class="title">20대 대학생 정oo님 후기</div>
+    </div>
+    <div class="text-box">
+      <p class="message-text">
+        생일 편지 받고 함박웃음 지었어요~!<br>다 제가 좋아하는 것들로 이루어져 있어서 편지를 찬찬히 보는 재미가 있어요.
+      </p>
+    </div>
+  </div>
+<div>
+  <img src="line24rabbit.gif" class="fullscreen-gif">
+</div>
+<section class="bg2">
+  <!-- 텍스트 오버레이 -->
+  <div class="overlay-content">
+    <div class="main-text-box">생일카드 구성</div>
+    <div class="yellow-box-row">
+      <div class="yellow-box">감각적인 표지</div>
+      <div class="yellow-box">생일자 프로필</div>
+      <div class="yellow-box">우정문답</div>
+      <div class="yellow-box">사랑이 담긴 편지</div>
+    </div>
+    <div><h2 class="highlight">생일 카드는 모두 y2k 스타일로 제작되는 점, 유의 부탁드립니다.</h2></div>
+  </div>
+</section>
+<div>
+  <img src="tokkiline.gif" class="fullscreen-gif">
+</div>
+<div class="container">
+    <img src="puffangel.gif" alt="천사 푸푸!" class="angel-image" />
+    <div class="rounded-button">어떻게 신청하는지도 알려주세요!</div>
+  </div>
+  <div class="full-background">
+    <div class="center-text">네! 당연히 알려드립니다!</div>
+  </div>
+</div>
+<section class="bg2">
+  <!-- 텍스트 오버레이 -->
+  <div class="overlay-content">
+    <div class="yellow-box-row">
+      <div class="yellow-box">Step 1.<br> 
+좋아하는 컬러를 알려주세요.
+<br>당신을 가장 잘 표현하는 색은 무엇인가요?<br>그 색이 디자인의 중심이 됩니다.
+
+<br>ex) “파란색이 좋아요. 포근하고, 시원한 느낌이라서요.”</div>
+      <div class="yellow-box">Step 2.<br>
+ 나를 보여주세요.<br>당신의 기본 정보와 셀카 세 장.<br>작은 정보들이 모여, 당신만의 무드를 완성해요.
+
+<br>ex) “mbti는 istp고, 키는 166cm예요.”“이건 제 최애 셀카예요!”</div>
+      <div class="yellow-box"> Step 3.<br> 
+좋아하는 걸 마구마구 말해주세요.<br>
+취미, 노래, 아이돌, 캐릭터, 음식… <br>당신이 좋아하는 것들로 카드를 가득 채울게요.
+
+<br>ex) “요즘 민트초코에 빠졌어요.” “양정원 팬이에요… 진심으로요.”</div>
+      <div class="yellow-box"> Step 4. <br>
+하루만 기다려주세요.<br>모든 정보를 바탕으로하나뿐인 생일 카드가 탄생합니다.<br>정성껏 만들고, 마음을 담아 하루 안에 예쁘게 전달드릴게요.</div>
+    </div>
+  </div>
+</section>
+</body>
+<footer class="footer">
+  <div class="footer-overlay">
+    <div class="footer-text">
+      <p>상점명 : 나만의 생일카드 서비스 | 대표 : 한준희 | 대표전화 : 롸롸롸-롸롸롸롸</p>
+      <p>주소 : 서울특별시 광진구 능동 xxxx | 사업자등록번호 : xx-xxxx</p>
+      <p>제휴/협력문의 : jjoonbori0802@gmail.com</p>
+      <p>&copy; 2025 birthdaycard service. 한준희 . 모든 권리 보유</p>
+    </div>
+  </div>
+</footer>
+</html>
